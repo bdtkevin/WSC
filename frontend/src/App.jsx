@@ -1,7 +1,9 @@
+import SApp from './SApp';
+
 export default function App() {
   return (
-    <div className='App'>
+    <SApp>
       <h1>Wilders Social Chat</h1>
-    </div>
+    </SApp>
   );
 }
