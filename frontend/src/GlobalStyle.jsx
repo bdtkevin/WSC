@@ -6,7 +6,12 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    color: #000;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  body {
+    overflow: hidden;
   }
 `;
 
