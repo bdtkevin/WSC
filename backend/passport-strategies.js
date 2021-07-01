@@ -1,9 +1,10 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const JWTStrategy = require('passport-jwt').Strategy;
+const GoogleStrategy = require('passport-google-oauth20');
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const bcrypt = require('bcrypt');
-const { db, jwt_secret } = require('./conf');
+const { db, jwt_secret, gId, gSecret } = require('./conf');
 
 passport.use(
   new LocalStrategy(
@@ -40,6 +41,20 @@ passport.use(
     (jwtPayload, done) => {
       const user = jwtPayload;
       return done(null, user);
+    }
+  )
+);
+
+passport.use(
+  new GoogleStrategy(
+    {
+      //strat
+      callbackURL: '/auth/google/redirect',
+      clientID: gId,
+      clientSecret: gSecret,
+    },
+    () => {
+      //cb
     }
   )
 );

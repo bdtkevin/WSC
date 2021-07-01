@@ -14,4 +14,6 @@ module.exports = {
   port: process.env.PORT,
   jwt_rounds: parseInt(process.env.JWT_SALTROUNDS),
   jwt_secret: process.env.JWT_SECRET,
+  gId: process.env.GOOGLE_ID,
+  gSecret: process.env.GOOGLE_SECRET,
 };
