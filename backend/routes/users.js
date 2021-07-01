@@ -1,17 +1,21 @@
 const usersRouter = require('express').Router();
 const Users = require('../models/users');
 
-usersRouter.get('/:id', async (req, res) => {
-  try {
-    const [[user]] = await Users.getOne(req.params.id);
+usersRouter.get('/', async (req, res) => {
+  let results = null;
 
-    if (!user) {
-      res.status(404).send(`User ${req.params.id} not found`);
+  try {
+    if (req.query.id) {
+      [[results]] = await Users.getOneById(req.query.id);
+    } else if (req.query.email) {
+      [[results]] = await Users.getOneByEmail(req.query.email);
     } else {
-      res.status(200).json(user);
+      [results] = await Users.getAll();
     }
+    if (!results || results.length === 0) throw { code: 'ER_NO_USERS' };
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).send('Error retrieving users from database');
+    res.status(404).send(err.code);
   }
 });
 

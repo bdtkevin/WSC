@@ -12,4 +12,6 @@ const db = mysql.createPool({
 module.exports = {
   db,
   port: process.env.PORT,
+  jwt_rounds: parseInt(process.env.JWT_SALTROUNDS),
+  jwt_secret: process.env.JWT_SECRET,
 };
