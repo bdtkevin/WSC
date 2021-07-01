@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import User from './contexts/User';
 import Header from './components/Header';
+import Login from './components/Login';
+import Signup from './components/Signup';
 import SApp from './SApp';
 
 export default function App() {
@@ -13,7 +16,10 @@ export default function App() {
       <User.Provider value={{ user, setUser }}>
         <Header />
         <main>
-          <p>toto</p>
+          <Switch>
+            <Route path='/login' component={Login} />
+            <Route path='/signup' component={Signup} />
+          </Switch>
         </main>
       </User.Provider>
     </SApp>
