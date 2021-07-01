@@ -1,7 +1,9 @@
+import SSignup from './styled/SSignup';
+
 export default function Signup() {
   return (
-    <div>
+    <SSignup>
       <p>signup</p>
-    </div>
+    </SSignup>
   );
 }
